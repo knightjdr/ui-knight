@@ -52,14 +52,46 @@ Basic button styling.
   font-size: 1.1em;
   padding: 10px 15px;
   position: relative;
-  overflow: hidden;
   transition: all 0.4s ease;
+}
+.knight-basic-css-button:focus,
+.knight-basic-css-button:hover {
+  background-color: #1a405f;
+  color: #faf4eb;
+}
+/* Fixes initial animation run, without user input, on page load. */
+.knight-basic-css-button:after {
+  visibility: hidden;
+}
+.knight-basic-css-button:focus:after {
+  visibility: visible;
 }
 
 /*********************
-Ripple effect.
+Border fade animation.
 **********************/
-.knight-basic-css-button:after {
+.knight-basic-css-button_border-fade:not(:active) {
+  animation: borderfade .5s ease-in;
+}
+@keyframes borderfade {
+  0%{
+    box-shadow: 0 0 0 0 transparent;
+  }
+  60%{
+    box-shadow: 0 0 0 3px #ffffff, 0 0 2px 4px rgba(26, 64, 95, 0.8);
+  }
+  100%{
+    box-shadow: 0 0 0 6px transparent, 0 0 0 8px transparent;
+  }
+}
+
+/*********************
+Ripple animation.
+**********************/
+.knight-basic-css-button_ripple {
+  overflow: hidden;
+}
+.knight-basic-css-button_ripple:after {
   background: #faf4eb;
   border-radius: 100%;
   content: '';
@@ -72,20 +104,8 @@ Ripple effect.
   transform: translate(-50%, -50%) scale(0);
   width: 150%;
 }
-.knight-basic-css-button:focus,
-.knight-basic-css-button:hover {
-  background-color: #1a405f;
-  color: #faf4eb;
-}
-.knight-basic-css-button:not(:active):after {
+.knight-basic-css-button_ripple:not(:active):after {
   animation: ripple 1.5s ease-out;
-}
-/* Fixes initial animation run, without user input, on page load. */
-.knight-basic-css-button:after {
-  visibility: hidden;
-}
-.knight-basic-css-button:focus:after {
-  visibility: visible;
 }
 @keyframes ripple {
   0% {

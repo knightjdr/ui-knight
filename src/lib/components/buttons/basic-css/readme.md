@@ -1,7 +1,7 @@
-A button with a CSS-only ripple effect applied via the :not(:active) selector.
+A button with a CSS-only click animations applied via the :not(:active) selector.
 The animation is hidden initially by applying "visibility: hidden" to the :after
 pseudo-element that has the animation effect. On :focus, :after is made visible.
-The animation doesn't play on keyboard navigation (and focus) because we are moving from
+The animation doesn't play on keyboard navigation (focus) because we are moving from
 no pseudo-class to :focus and the animation only plays once. If the animation
 looped infinitely, the animation would show on :focus in this scenario. By
 applying the animation using the :not(:active) selector, the animation will play
@@ -40,4 +40,14 @@ initialState = { click: false, enter: false }
     { state.enter ? 'enter pressed' : null }
   </div>
 </div>
+```
+
+<strong>Ripple effect (default)</strong>
+```jsx
+<BasicCssButton effect="ripple" />
+```
+
+<strong>Border fade</strong>
+```jsx
+<BasicCssButton effect="borderfade" />
 ```
