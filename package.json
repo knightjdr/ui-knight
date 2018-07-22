@@ -4,9 +4,13 @@
   "description": "James Knight's ui react components",
   "main": "build/index.js",
   "scripts": {
-    "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "build-all": "npm run styleguide:build",
     "demo": "node scripts/demo.js",
+    "deploy": "git subtree push --prefix styleguide origin gh-pages",
+    "start": "node scripts/start.js",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build",
     "test": "node scripts/test.js --env=jsdom"
   },
   "repository": {
