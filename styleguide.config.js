@@ -6,6 +6,7 @@ module.exports = {
     '**/*.test.{js,jsx,ts,tsx}',
     '**/*.spec.{js,jsx,ts,tsx}',
     '**/*.d.ts',
+    '**/*_noguide*',
   ],
   require: [
     './src/lib/style/styleguidist.css',
@@ -17,8 +18,13 @@ module.exports = {
     },
     {
       name: 'Buttons',
-      content: 'src/lib/components/buttons/buttons.md',
-      components: 'src/lib/components/buttons/**/*.js',
+      content: 'src/lib/components/button/button.md',
+      components: 'src/lib/components/button/**/*.js',
+    },
+    {
+      name: 'Inputs',
+      content: 'src/lib/components/input/input.md',
+      components: 'src/lib/components/input/**/*.js',
     },
   ],
   showUsage: true,

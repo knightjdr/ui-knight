@@ -56,7 +56,7 @@ BasicCssButton.propTypes = {
   /** Custom class. */
   className: PropTypes.string,
   /** Click effect */
-  effect: PropTypes.string,
+  effect: PropTypes.oneOf(['borderfade', 'ripple']),
   /** Function to call on pressing the enter button. */
   onEnter: PropTypes.func,
   /** Add default box shadow. */
