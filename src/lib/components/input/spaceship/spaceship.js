@@ -11,9 +11,10 @@ class Spaceship extends Component {
       animateText: false,
     };
   }
-  onEnter = () => {
-    const { animationDuration } = this.props;
+  onEnter = (e) => {
+    const { animationDuration, onEnter } = this.props;
     this.updateAnimation(animationDuration);
+    onEnter(e);
   }
   updateAnimation = (timeout) => {
     clearTimeout(this.timeoutID);
@@ -23,13 +24,14 @@ class Spaceship extends Component {
     }, timeout);
   }
   render() {
-    const { onEnter, ...otherProps } = this.props;
     const { animateText, inputText } = this.state;
+
+    // Place onEnter after this.props to overwrite this.props.onEnter.
     return (
       <SpaceshipView
         animateText={animateText}
         inputText={inputText}
-        {...otherProps}
+        {...this.props}
         onEnter={this.onEnter}
       />
     );
@@ -40,7 +42,7 @@ Spaceship.defaultProps = {
   animationDuration: 1000,
   animationName: null,
   focusText: 'Warming tractor beam...',
-  onEnter: null,
+  onEnter: () => {},
   placeholderText: 'Placeholder...',
 };
 

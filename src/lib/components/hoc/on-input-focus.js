@@ -24,6 +24,7 @@ const OnInputFocus = (WrappedComponent) => {
       });
     }
     render() {
+      // Remove props consumed by this handler.
       const { focusText, placeholderText, ...otherProps } = this.props;
       const { placeholder } = this.state;
       return (

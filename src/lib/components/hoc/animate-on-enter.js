@@ -10,12 +10,12 @@ const AnimateOnClick = (WrappedComponent) => {
         active: false,
       };
     }
-    onEnter = (e, ...args) => {
+    onEnter = (e) => {
       const { animationDuration, onEnter } = this.props;
       switch (e.key) {
         case 'Enter':
           this.updateAnimation(animationDuration);
-          onEnter(e, args);
+          onEnter(e);
           break;
         default:
           break;
@@ -29,13 +29,17 @@ const AnimateOnClick = (WrappedComponent) => {
       }, timeout);
     }
     render() {
+      // Remove props consumed by this handler.
       const {
         animationDuration,
         animationName,
         className,
+        onEnter,
         ...otherProps
       } = this.props;
       const { active } = this.state;
+
+      // Update className based on animation state.
       const classes = [];
       if (className) {
         classes.push(className);
@@ -46,8 +50,8 @@ const AnimateOnClick = (WrappedComponent) => {
       return (
         <WrappedComponent
           className={classes.join(' ')}
-          {...otherProps}
           onEnter={this.onEnter}
+          {...otherProps}
         />
       );
     }
