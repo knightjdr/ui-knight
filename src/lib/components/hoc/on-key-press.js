@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-// Adds on enter
+// Adds events on pressing specified keys. Only supports Enter currently.
 const OnKeyPress = (WrappedComponent) => {
   class _OnKeyPress extends Component {
     onKeyPress = (e) => {
@@ -19,7 +19,6 @@ const OnKeyPress = (WrappedComponent) => {
       const { onEnter, ...otherProps } = this.props;
       return (
         <WrappedComponent
-          onClick={this.onClick}
           onKeyPress={this.onKeyPress}
           {...otherProps}
         />

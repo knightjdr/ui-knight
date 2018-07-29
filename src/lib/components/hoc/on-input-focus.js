@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-// Adds on enter
-const OnFocus = (WrappedComponent) => {
-  class _OnFocus extends Component {
+// Updates an inputs placholder text on focus.
+const OnInputFocus = (WrappedComponent) => {
+  class _OnInputFocus extends Component {
     constructor(props) {
       super(props);
       const { placeholderText } = this.props;
@@ -37,17 +37,17 @@ const OnFocus = (WrappedComponent) => {
     }
   }
 
-  _OnFocus.defaultProps = {
-    focusText: 'Warming tractor beam...',
+  _OnInputFocus.defaultProps = {
+    focusText: 'Focus...',
     placeholderText: 'Placeholder...',
   };
 
-  _OnFocus.propTypes = {
+  _OnInputFocus.propTypes = {
     focusText: PropTypes.string,
     placeholderText: PropTypes.string,
   };
 
-  return _OnFocus;
+  return _OnInputFocus;
 };
 
-export default OnFocus;
+export default OnInputFocus;

@@ -1,77 +1,60 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 
-import OnFocus from './spaceship-focus_noguide';
+import SpaceshipView from './spaceship_noguide';
 
-import './spaceship.css';
-
-const Spaceship = ({
-  className,
-  onBlur,
-  onFocus,
-  placeholder,
-  ...props
-}) => {
-  const classes = ['knight-spaceship__input'];
-  // Add user supplied class(es).
-  if (className) { classes.push(className); }
-  const { focusText, placeholderText, ...otherProps } = props;
-  return (
-    <div className="knight-spaceship">
-      <input
-        className={classes.join(' ')}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        placeholder={placeholder}
+class Spaceship extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputText: '',
+      animateText: false,
+    };
+  }
+  onEnter = () => {
+    const { animationDuration } = this.props;
+    this.updateAnimation(animationDuration);
+  }
+  updateAnimation = (timeout) => {
+    clearTimeout(this.timeoutID);
+    this.setState({ animateText: true });
+    this.timeoutID = setTimeout(() => {
+      this.setState({ animateText: false });
+    }, timeout);
+  }
+  render() {
+    const { onEnter, ...otherProps } = this.props;
+    const { animateText, inputText } = this.state;
+    return (
+      <SpaceshipView
+        animateText={animateText}
+        inputText={inputText}
         {...otherProps}
+        onEnter={this.onEnter}
       />
-      <svg
-        className="knight-spaceship__svg"
-        height="70px"
-        width="40px"
-      >
-        <g>
-          <rect
-            fill="#000000"
-            height="25px"
-            transform="translate(0 0)"
-            width="40px"
-            x="0"
-            y="60"
-          >
-            <animate
-              attributeName="y"
-              dur="2s"
-              repeatCount="indefinite"
-              values="60;65;60"
-            />
-          </rect>
-        </g>
-      </svg>
-    </div>
-  );
-};
-
+    );
+  }
+}
 
 Spaceship.defaultProps = {
-  className: null,
-  focusText: '',
-  placeholderText: '',
+  animationDuration: 1000,
+  animationName: null,
+  focusText: 'Warming tractor beam...',
+  onEnter: null,
+  placeholderText: 'Placeholder...',
 };
 
 Spaceship.propTypes = {
-  /** Custom class. */
-  className: PropTypes.string,
+  /** Animation length in ms */
+  animationDuration: PropTypes.number,
+  /** Animateion class name */
+  animationName: PropTypes.string,
   /** Text to use for placeholder on focus. */
   focusText: PropTypes.string,
-  /** @ignore */
-  onBlur: PropTypes.func.isRequired,
-  /** @ignore */
-  onFocus: PropTypes.func.isRequired,
-  /** @ignore */
-  placeholder: PropTypes.string.isRequired,
+  /** The function to call on hitting the enter key. */
+  onEnter: PropTypes.func,
   /** Text to use for placeholder. */
   placeholderText: PropTypes.string,
 };
 
-export default OnFocus(Spaceship);
+export default Spaceship;
