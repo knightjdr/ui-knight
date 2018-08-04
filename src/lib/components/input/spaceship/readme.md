@@ -1,4 +1,4 @@
-An input with a spaceship animation on and focus.
+An input with a spaceship animation on focus.
 
 <strong>Default</strong>
 ```jsx

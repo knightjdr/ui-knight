@@ -26,6 +26,11 @@ module.exports = {
       content: 'src/lib/components/input/input.md',
       components: 'src/lib/components/input/**/*.js',
     },
+    {
+      name: 'Layout',
+      content: 'src/lib/components/layout/layout.md',
+      components: 'src/lib/components/layout/**/*.js',
+    },
   ],
   showUsage: true,
   styles: {

@@ -1,0 +1,60 @@
+.knight-ui-navbar__menu {
+  cursor: pointer;
+  margin-top: 3px;
+}
+.knight-ui-navbar__menu-bars path {
+  transition: fill 0.3s linear;
+}
+.knight-ui-navbar__menu-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.knight-ui-navbar__menu-button:focus {
+  outline: 0;
+}
+.knight-ui-navbar_background .knight-ui-navbar__menu-button .knight-ui-navbar__menu-bars path {
+  fill: #faf4eb;
+}
+.knight-ui-navbar__menu-button:hover .knight-ui-navbar__menu-bars path {
+  fill: #33cc72;
+}
+.knight-ui-navbar__menu-inner {
+  background-color: #faf4eb;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  transition: all 0.2s linear;
+  transform-origin: top right;
+  z-index: 100;
+}
+.knight-ui-navbar__menu-inner > ul {
+  font-size: 1.3em;
+  font-weight: bold;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.knight-ui-navbar__menu-inner a {
+  text-decoration: none;
+}
+.knight-ui-navbar__menu-inner li {
+  color: #1a405f;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+.knight-ui-navbar__menu-inner li:hover {
+  color: #33cc72;
+}
+.knight-ui-navbar__menu_hide {
+  opacity: 0;
+  transform: scale(0);
+}
+.knight-ui-navbar__menu_show {
+  opacity: 1;
+  transform: scale(1);
+}

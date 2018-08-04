@@ -5,10 +5,10 @@ import React, { Component } from 'react';
 const OnKeyPress = (WrappedComponent) => {
   class _OnKeyPress extends Component {
     onKeyPress = (e) => {
-      e.preventDefault();
       const { onEnter } = this.props;
       switch (e.key) {
         case 'Enter':
+          e.preventDefault();
           onEnter(e);
           break;
         default:

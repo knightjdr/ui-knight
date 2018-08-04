@@ -33,7 +33,7 @@ initialState = { click: false, enter: false }
 ;<div className="row">
   <BasicCssButton
     onClick={() => { setState({ click: true, enter: false }); }}
-    onEnter={() => { setState({ click: false, enter: true }); }}
+    onEnter={(e) => { setState({ click: false, enter: true }); }}
   />
   <div className="console">
     { state.click ? 'button clicked' : null }

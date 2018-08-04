@@ -53,7 +53,7 @@ BasicCssButton.propTypes = {
     PropTypes.shape({}),
     PropTypes.string,
   ]),
-  /** Custom class. */
+  /** Class(es). */
   className: PropTypes.string,
   /** Click effect */
   effect: PropTypes.oneOf(['borderfade', 'ripple']),

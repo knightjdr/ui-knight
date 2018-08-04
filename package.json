@@ -24,7 +24,9 @@
   "homepage": "https://github.com/knightjdr/ui-knight#readme",
   "license": "MIT",
   "dependencies": {
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "react-onclickoutside": "^6.7.1",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "autoprefixer": "7.1.6",
