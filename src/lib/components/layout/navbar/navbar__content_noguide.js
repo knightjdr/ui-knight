@@ -38,8 +38,8 @@ NavbarContent.propTypes = {
   fixed: PropTypes.bool.isRequired,
   links: PropTypes.arrayOf(PropTypes.shape({
     href: PropTypes.bool,
-    route: PropTypes.string,
     props: PropTypes.shape({}),
+    route: PropTypes.string,
     text: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.string,

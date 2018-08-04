@@ -22,8 +22,8 @@ class Navbar extends Component {
     });
   }
   smallScreen = () => {
-    const { smallScreenSize } = this.props;
-    return window.innerWidth <= smallScreenSize;
+    const { smallScreen } = this.props;
+    return window.innerWidth <= smallScreen;
   }
   render() {
     const {
@@ -32,7 +32,7 @@ class Navbar extends Component {
       fixed,
       links,
       logoLink,
-      smallScreenSize,
+      smallScreen,
       ...otherProps
     } = this.props;
     const { isSmallScreen } = this.state;
@@ -57,7 +57,7 @@ Navbar.defaultProps = {
   logoLink: {
     route: '/',
   },
-  smallScreenSize: 680,
+  smallScreen: 680,
   shadow: true,
 };
 
@@ -69,8 +69,8 @@ Navbar.propTypes = {
   /** Navigation links */
   links: PropTypes.arrayOf(PropTypes.shape({
     href: PropTypes.bool,
-    route: PropTypes.string,
     props: PropTypes.shape({}),
+    route: PropTypes.string,
     text: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.string,
@@ -84,7 +84,7 @@ Navbar.propTypes = {
   /** Add shadow */
   shadow: PropTypes.bool,
   /** The width in pixels to use for determining small screen */
-  smallScreenSize: PropTypes.number,
+  smallScreen: PropTypes.number,
 };
 
 export default Navbar;
