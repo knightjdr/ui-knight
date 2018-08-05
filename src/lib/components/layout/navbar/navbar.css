@@ -16,9 +16,6 @@
 .knight-ui-navbar_background {
   background-color: #337bae;
 }
-.knight-ui-navbar__bars {
-  content: url(./assets/bars.svg);
-}
 .knight-ui-navbar_shadow {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16);
 }
