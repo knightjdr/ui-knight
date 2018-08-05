@@ -1,4 +1,4 @@
-const webpackConfig = require('./config/webpack.config.dev.js');
+const webpackConfig = require('./config/webpack.config.styleguide.prod.js');
 
 module.exports = {
   ignore: [
@@ -48,6 +48,45 @@ module.exports = {
       },
     },
   },
+  template: {
+    title: 'UI Knight',
+    head: {
+      meta: [
+        {
+          name: 'theme-color',
+          content: '#337bae',
+        },
+      ],
+      links: [
+        {
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          href: 'static/media/apple-touch-icon.png',
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '32x32',
+          href: 'static/media/favicon-32x32.png',
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '16x16',
+          href: 'static/media/favicon-16x16.png',
+        },
+        {
+          rel: 'manifest',
+          href: 'static/media/site.webmanifest',
+        },
+        {
+          rel: 'mask-icon',
+          href: 'static/media/safari-pinned-tab.svg',
+          color: '#337bae',
+        },
+      ],
+    },
+  },
   theme: {
     color: {
       link: '#88badd',
@@ -67,6 +106,5 @@ module.exports = {
     },
     sidebarWidth: 200,
   },
-  title: 'UI Knight',
   webpackConfig,
 };
