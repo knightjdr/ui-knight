@@ -8,7 +8,7 @@ applying the animation using the :not(:active) selector, the animation will play
 again once moving from :active to :focus. See discussion
 <a
   href="https://ghinda.net/article/css-ripple-material-design/"
-  rel="noopener noreferrer">here</a>.
+  rel="noopener noreferrer">here</a>. However, this only works in Chrome.
 
 <strong>Default</strong>
 ```jsx

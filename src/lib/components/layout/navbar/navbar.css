@@ -50,10 +50,12 @@
 .knight-ui-navbar__links > :not(:last-child) {
   margin-right: 10px;
 }
-.knight-ui-navbar__logo {
+.knight-ui-navbar__logo:before {
   content: url('./assets/knight_blue-green.svg');
+  position: relative;
+  top: 3px; /* Add 3px for svg inline space. */
 }
-.knight-ui-navbar_background .knight-ui-navbar__logo {
+.knight-ui-navbar_background .knight-ui-navbar__logo:before {
   content: url('./assets/knight_white-green.svg');
 }
 .knight-ui-navbar__logo-link {

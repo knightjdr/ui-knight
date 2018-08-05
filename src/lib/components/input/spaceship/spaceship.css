@@ -15,13 +15,25 @@
 }
 
 /*********************
+Wrapper styling.
+**********************/
+.knight-spaceship {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  position: relative;
+  width: auto;
+}
+
+/*********************
 Spaceship input styling.
 **********************/
 .knight-spaceship__input {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  margin-top: 60px;
+  margin-top: 80px;
   padding: 5px 8px;
   position: relative;
   width: 250px;
@@ -33,7 +45,7 @@ Focus.
 **********************/
 .knight-spaceship__input:focus + svg > g {
   opacity: 1;
-  transform: translateY(-60px);
+  transform: translateY(0px);
 }
 
 /*********************
@@ -46,17 +58,62 @@ Spaceship svg styling.
 }
 .knight-spaceship__svg > g {
   opacity: 0;
+  transform: translate(0, 80px);
   transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(.17, .67, .16, .99);
 }
-
-/*********************
-Wrapper styling.
-**********************/
-.knight-spaceship {
-  align-items: center;
-  display: inline-flex;
-  flex-direction: column;
-  overflow-y: hidden;
-  position: relative;
-  width: auto;
+.knight-spaceship__svg > g > g {
+  animation: hover 1s linear 0s infinite none alternate;
+  transform: translate(0, 0);
+}
+.knight-spaceship__armor {
+  fill: #337BAE;
+}
+.knight-spaceship__glass {
+  animation: fog 1.5s linear infinite alternate;
+  fill: #33CC72;
+}
+circle[class^="knight-spaceship__lights-"] {
+  animation-duration: 0.48s;
+  animation-iteration-count: infinite;
+  animation-name: lights;
+  animation-timing-function: linear;
+}
+.knight-spaceship__lights-2 {
+  animation-delay: 0.08s;
+}
+.knight-spaceship__lights-3 {
+  animation-delay: 0.16s;
+}
+.knight-spaceship__lights-4 {
+  animation-delay: 0.24s;
+}
+.knight-spaceship__lights-5 {
+  animation-delay: 0.32s;
+}
+.knight-spaceship__lights-6 {
+  animation-delay: 0.40s;
+}
+@keyframes fog {
+  from {
+    fill: #33CC72;
+  }
+  to {
+    fill: #F1F10E;
+  }
+}
+@keyframes hover {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(0, 5px);
+  }
+}
+@keyframes lights {
+  from {
+    fill: #F1F10E;
+  }
+  to {
+    fill: #337BAE;
+  }
 }

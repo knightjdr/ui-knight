@@ -3,6 +3,7 @@ import React from 'react';
 
 import AnimateOnEnter from '../../hoc/animate-on-enter';
 import OnInputFocus from '../../hoc/on-input-focus';
+import Spaceship from './assets/spaceship';
 
 import './spaceship.css';
 
@@ -30,29 +31,7 @@ const SpaceshipView = ({
         placeholder={placeholder}
         {...otherProps}
       />
-      <svg
-        className="knight-spaceship__svg"
-        height="70px"
-        width="40px"
-      >
-        <g>
-          <rect
-            fill="#000000"
-            height="25px"
-            transform="translate(0 0)"
-            width="40px"
-            x="0"
-            y="60"
-          >
-            <animate
-              attributeName="y"
-              dur="2s"
-              repeatCount="indefinite"
-              values="60;65;60"
-            />
-          </rect>
-        </g>
-      </svg>
+      <Spaceship />
     </div>
   );
 };
