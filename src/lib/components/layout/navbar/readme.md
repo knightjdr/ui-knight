@@ -13,8 +13,8 @@ const { BrowserRouter } = require('react-router-dom');
     <Navbar
       fixed={false}
       links={[
-        { route: '/', text: 'LINK1'},
-        { route: '/', text: 'LINK2'},
+        { route: '/', text: 'ARMOUR'},
+        { route: '/', text: 'SWORDS'},
       ]}
     />
   </div>
@@ -31,8 +31,8 @@ const { BrowserRouter } = require('react-router-dom');
       background={false}
       fixed={false}
       links={[
-        { route: '/', text: 'LINK1'},
-        { route: '/', text: 'LINK2'},
+        { route: '/', text: 'ARMOUR'},
+        { route: '/', text: 'SWORDS'},
       ]}
     />
   </div>
@@ -49,8 +49,8 @@ const { BrowserRouter } = require('react-router-dom');
       <Navbar
         fixed={false}
         links={[
-          { route: '/', text: 'LINK1'},
-          { route: '/', text: 'LINK2'},
+          { route: '/', text: 'ARMOUR'},
+          { route: '/', text: 'SWORDS'},
         ]}
       />
     </div>
@@ -58,8 +58,8 @@ const { BrowserRouter } = require('react-router-dom');
       <Navbar
         fixed={false}
         links={[
-          { route: '/', text: 'LINK1'},
-          { route: '/', text: 'LINK2'},
+          { route: '/', text: 'ARMOUR'},
+          { route: '/', text: 'SWORDS'},
         ]}
         shadow={false}
       />

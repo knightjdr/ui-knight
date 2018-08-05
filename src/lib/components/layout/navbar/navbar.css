@@ -53,8 +53,11 @@
 .knight-ui-navbar__links > :not(:last-child) {
   margin-right: 10px;
 }
-.knight-ui-navbar__logo > svg {
-  display: block;
+.knight-ui-navbar__logo {
+  content: url('./assets/knight_blue-green.svg');
+}
+.knight-ui-navbar_background .knight-ui-navbar__logo {
+  content: url('./assets/knight_white-green.svg');
 }
 .knight-ui-navbar__logo-link {
   float: left;
