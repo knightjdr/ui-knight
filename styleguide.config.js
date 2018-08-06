@@ -1,4 +1,13 @@
-const webpackConfig = require('./config/webpack.config.styleguide.prod.js');
+let faviconPath;
+let webpackConfig;
+if (process.env.NODE_ENV === 'production') {
+  webpackConfig = require('./config/webpack.config.styleguide.prod.js');
+  faviconPath = 'static/media/';
+} else {
+  webpackConfig = require('./config/webpack.config.dev.js');
+  faviconPath = 'design/favicon/';
+}
+
 
 module.exports = {
   ignore: [
@@ -6,6 +15,7 @@ module.exports = {
     '**/*.test.{js,jsx,ts,tsx}',
     '**/*.spec.{js,jsx,ts,tsx}',
     '**/*.d.ts',
+    '**/assets/*',
     '**/*_noguide*',
   ],
   require: [
@@ -22,6 +32,11 @@ module.exports = {
       components: 'src/lib/components/button/**/*.js',
     },
     {
+      name: 'Feedback',
+      content: 'src/lib/components/feedback/feedback.md',
+      components: 'src/lib/components/feedback/**/*.js',
+    },
+    {
       name: 'Inputs',
       content: 'src/lib/components/input/input.md',
       components: 'src/lib/components/input/**/*.js',
@@ -30,6 +45,10 @@ module.exports = {
       name: 'Layout',
       content: 'src/lib/components/layout/layout.md',
       components: 'src/lib/components/layout/**/*.js',
+    },
+    {
+      name: 'Animations',
+      content: 'src/lib/components/animations/readme.md',
     },
   ],
   showUsage: true,
@@ -53,6 +72,10 @@ module.exports = {
     head: {
       meta: [
         {
+          name: 'description',
+          content: 'UI Knight style guide',
+        },
+        {
           name: 'theme-color',
           content: '#337bae',
         },
@@ -61,27 +84,27 @@ module.exports = {
         {
           rel: 'apple-touch-icon',
           sizes: '180x180',
-          href: 'static/media/apple-touch-icon.png',
+          href: `${faviconPath}apple-touch-icon.png`,
         },
         {
           rel: 'icon',
           type: 'image/png',
           sizes: '32x32',
-          href: 'static/media/favicon-32x32.png',
+          href: `${faviconPath}favicon-32x32.png`,
         },
         {
           rel: 'icon',
           type: 'image/png',
           sizes: '16x16',
-          href: 'static/media/favicon-16x16.png',
+          href: `${faviconPath}favicon-16x16.png`,
         },
         {
           rel: 'manifest',
-          href: 'static/media/site.webmanifest',
+          href: `${faviconPath}site.webmanifest`,
         },
         {
           rel: 'mask-icon',
-          href: 'static/media/safari-pinned-tab.svg',
+          href: `${faviconPath}safari-pinned-tab.svg`,
           color: '#337bae',
         },
       ],
@@ -106,5 +129,6 @@ module.exports = {
     },
     sidebarWidth: 200,
   },
+  title: 'UI Knight style guide',
   webpackConfig,
 };

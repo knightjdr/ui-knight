@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-// Adds a class on click and removes it after the prop timeout.
+// Adds a class on enter and removes it after the prop timeout.
 const AnimateOnClick = (WrappedComponent) => {
   class _AnimateOnClick extends Component {
     constructor(props) {

@@ -1,0 +1,25 @@
+.knight-loading-dots > svg > circle {
+  animation: dot-scale-fade 1.5s linear infinite;
+  opacity: 0;
+  r: 5px;
+}
+.knight-loading-dots > svg > :nth-child(2) {
+  animation-delay: 0.3s;
+}
+.knight-loading-dots > svg > circle:last-child {
+  animation-delay: 0.6s;
+}
+@keyframes dot-scale-fade {
+  0% {
+    opacity: 0;
+    r: 5px;
+  }
+  50% {
+    opacity: 1;
+    r: 10px;
+  }
+  100% {
+    opacity: 0;
+    r: 5px;
+  }
+}

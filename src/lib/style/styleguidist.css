@@ -19,3 +19,6 @@
 .row > :not(:last-child) {
   margin-right: 10px;
 }
+.row_padding {
+  padding: 20px;
+}

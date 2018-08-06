@@ -8,7 +8,7 @@
 <InputView placeholder="Placeholder..." />
 ```
 
-<strong>Shadow</strong>
+<strong>With shadow</strong>
 ```jsx
 <InputView shadow />
 ```

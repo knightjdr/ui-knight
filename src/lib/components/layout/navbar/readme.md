@@ -21,7 +21,7 @@ const { BrowserRouter } = require('react-router-dom');
 </BrowserRouter>
 ```
 
-<strong>Background</strong>
+<strong>Without background</strong>
 
 ```jsx
 const { BrowserRouter } = require('react-router-dom');
@@ -39,7 +39,8 @@ const { BrowserRouter } = require('react-router-dom');
 </BrowserRouter>
 ```
 
-<strong>Shadow</strong>
+<strong>With shadow</strong>
+Can only be applied when a background is present.
 
 ```jsx
 const { BrowserRouter } = require('react-router-dom');

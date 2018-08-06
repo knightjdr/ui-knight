@@ -1,0 +1,26 @@
+.knight-pulse, {
+  animation: pulse-shadow 1.5s 5 cubic-bezier(0.66, 0, 0, 1);
+}
+.knight-pulse-one, {
+  animation: pulse-shadow 1.5s 1 cubic-bezier(0.66, 0, 0, 1);
+}
+.knight-pulse-two, {
+  animation: pulse-shadow 1.5s 2 cubic-bezier(0.66, 0, 0, 1);
+}
+.knight-pulse-infinite, {
+  animation: pulse-shadow 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+.knight-pulse:hover,
+.knight-pulse-one:hover,
+.knight-pulse-two:hover,
+.knight-pulse-infinite:hover {
+  animation: none;
+}
+@keyframes pulse-shadow {
+  from {
+    box-shadow: 0 0 0 0 rgba(12, 30, 62, 0.7);
+  }
+  to {
+    box-shadow: 0 0 0 10px rgba(12, 30, 62, 0);
+  }
+}
