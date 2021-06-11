@@ -16,7 +16,6 @@ Primary.args = {
 
 export const Shadow = Template.bind({});
 Shadow.args = {
-  kind: 'primary',
   shadow: true,
 };
 

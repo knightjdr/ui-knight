@@ -19,6 +19,7 @@ const ButtonDefaultStyled = styled.button<ButtonDefaultStyleProps>`
   background-color: transparent;
   border-color: transparent;
   box-sizing: border-box;
+  font-family: inherit;
   transform-origin: center;
   transition-duration: 0.3s;
   transition-property: background-color, border-color, color;
