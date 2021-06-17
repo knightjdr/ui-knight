@@ -1,29 +1,92 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 
-export interface ButtonDefaultStyleProps {
-   /**
-    * Disable the button.
-    */
-   disabled?: boolean;
-   /**
-    * Button appearance.
-    */
-   kind?: 'alert' | 'primary' | 'success' | 'warning';
-   /**
-    * Add a shadow.
-    */
-   shadow?: boolean;
+export const defaultProps = {
+  backgroundColor: '',
+  color: '',
+  disabled: false,
+  kind: 'primary' as const,
+  shadow: false,
+};
+
+export interface ButtonProps {
+  /**
+   * The button color. Overrides the color applied by the "kind" property and also the theme.
+   */
+  backgroundColor: string;
+  /**
+   * Text color.
+   */
+  color: string
+  /**
+   * Disable the button.
+   */
+  disabled: boolean;
+  /**
+   * Button appearance.
+   */
+  kind: 'alert' | 'primary' | 'success' | 'warning';
+  /**
+   * Add a shadow.
+   */
+  shadow: boolean;
 }
 
-const ButtonDefaultStyled = styled.button<ButtonDefaultStyleProps>`
+const defineButtonColor = (backgroundColor: string, kind: string, theme: DefaultTheme): string => {
+  if (backgroundColor) {
+    return backgroundColor;
+  } if (kind === 'alert') {
+    return theme?.palette?.alert || '#ffe14d';
+  } if (kind === 'primary') {
+    return theme?.palette?.primary || '#1ea7fd';
+  } if (kind === 'palette') {
+    return theme?.palette?.success || '#56b85b';
+  } if (kind === 'warning') {
+    return theme?.palette?.warning || '#f7706a';
+  }
+  return '#1ea7fd';
+};
+
+const Button = styled.button<ButtonProps>`
   background-color: transparent;
   border-color: transparent;
   box-sizing: border-box;
+  color: ${({ color, theme }) => {
+    if (color) {
+      return color;
+    } if (theme?.palette?.common?.black) {
+      return theme.palette.common.black;
+    }
+    return '#333';
+  }};
   font-family: inherit;
+  position: relative;
   transform-origin: center;
   transition-duration: 0.3s;
-  transition-property: background-color, border-color, color;
+  transition-property: all;
   transition-timing-function: cubic-bezier(.17, .67, .16, .99);
+
+  &::after {
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition-duration: 0.3s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.17, .67, .16, .99);
+    width: 100%;
+    z-index: -1;
+  }
+  &::before {
+    background-color: #fff;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
 
   &:focus {
     outline: none;
@@ -32,70 +95,28 @@ const ButtonDefaultStyled = styled.button<ButtonDefaultStyleProps>`
     border: 0;
   }
 
+  &:focus:not([disabled])::after,
+  &:hover:not([disabled])::after {
+    opacity: 0.5;
+  }
+
   ${(props) => (props.disabled
-    && css`& {
+    && css`
+    & {
+      background-color: #c2c0c0;
+      border-color: #c2c0c0;
       cursor: not-allowed;
-      opacity: 0.6;
-    }`
+    }
+    `
   )};
 
   ${(props) => (props.shadow
-    && css`& {
+    && css`
+    & {
       box-shadow: 0 0.125rem 0.3rem 0 rgba(0, 0, 0, 0.26);
-    }`
-  )};
-
-  ${(props) => (props.kind === 'alert'
-    && css`& {
-      background-color: #ffe14d;
-      color: #421C1A;
     }
-    &:focus:not([disabled]),
-    &:hover:not([disabled]) {
-      background-color: #F2F2F2;
-      border-color: #ffe14d;
-    }`
+    `
   )};
-
-  ${(props) => (props.kind === 'primary'
-    && css`& {
-      background-color: #2A3132;
-      color: #F2F2F2;
-    }
-    &:focus:not([disabled]),
-    &:hover:not([disabled]) {
-      background-color: #F2F2F2;
-      border-color: #2A3132;
-      color: #2A3132;
-    }`
-  )};
-
-  ${(props) => (props.kind === 'success'
-    && css`& {
-      background-color: #026E07;
-      color: #F2F2F2;
-    }
-    &:focus:not([disabled]),
-    &:hover:not([disabled]) {
-      background-color: #fff;
-      border-color: #026E07;
-      color: #026E07;
-    }`
-  )};
-
-  ${(props) => (props.kind === 'warning'
-    && css`&{
-      background-color: #C2352A;
-      color: #F2F2F2;
-    }
-
-    &:focus:not([disabled]),
-    &:hover:not([disabled]) {
-      background-color: #fff;
-      border-color: #C2352A;
-      color: #C2352A;
-    }`
-  )}
 
   &:active {
     animation-duration: 0.3s;
@@ -116,12 +137,20 @@ const ButtonDefaultStyled = styled.button<ButtonDefaultStyleProps>`
       transform: scale(1);
     }
   }
+
+  ${({ backgroundColor, kind, theme }) => {
+    const buttonColor: string = defineButtonColor(backgroundColor, kind, theme);
+    return `
+      &:not([disabled]) {
+      border-color: ${buttonColor};
+    }
+    &::after{
+      background-color: ${buttonColor};
+    }
+    `;
+  }}
 `;
 
-ButtonDefaultStyled.defaultProps = {
-  disabled: false,
-  kind: 'primary',
-  shadow: false,
-};
+Button.defaultProps = defaultProps;
 
-export default ButtonDefaultStyled;
+export default Button;
