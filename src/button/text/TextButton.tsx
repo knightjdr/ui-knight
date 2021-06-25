@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Button, { ButtonProps, defaultProps as defaultButtonProps } from './button-defaults';
+import Button, { ButtonProps, defaultProps as defaultButtonProps } from '../Button';
 
 const defaultProps = {
   ...defaultButtonProps,
@@ -17,7 +17,7 @@ const ButtonWithExtendedStyle = styled(Button)`
   padding: 0.2rem 0.5rem;
 `;
 
-export interface ButtonRectangularProps extends ButtonProps {
+export interface TextButtonProps extends ButtonProps {
   /**
    * Class to add. Will always have 'uiknight-button'.
    */
@@ -27,7 +27,7 @@ export interface ButtonRectangularProps extends ButtonProps {
 /**
  * Button with text
  */
-const ButtonRectangular = ({
+const TextButton = ({
   backgroundColor,
   className,
   color,
@@ -35,7 +35,7 @@ const ButtonRectangular = ({
   kind = 'primary',
   shadow,
   ...props
-}: ButtonRectangularProps) => {
+}: TextButtonProps) => {
   const classes = ['uiknight-button'];
   if (className) {
     classes.push(className);
@@ -53,6 +53,6 @@ const ButtonRectangular = ({
   );
 };
 
-ButtonRectangular.defaultProps = defaultProps;
+TextButton.defaultProps = defaultProps;
 
-export default ButtonRectangular;
+export default TextButton;

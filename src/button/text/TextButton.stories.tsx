@@ -1,14 +1,15 @@
 import React from 'react';
+import { Meta, Story } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import ButtonRectangular from './ButtonRectangular';
+import Button, { TextButtonProps } from './TextButton';
 
 export default {
-  title: 'Examples/Button',
-  component: ButtonRectangular,
-};
+  title: 'Examples/Button/Text',
+  component: Button,
+} as Meta;
 
-const Template = (args) => <ButtonRectangular {...args}>Button</ButtonRectangular>;
+const Template: Story<TextButtonProps> = (args) => <Button {...args}>Button</Button>;
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -36,9 +37,9 @@ const theme = {
     primary: '#db8ce6',
   },
 };
-const ThemedTemplate = (args) => (
+const ThemedTemplate: Story<TextButtonProps> = (args) => (
   <ThemeProvider theme={theme}>
-    <ButtonRectangular {...args}>Button</ButtonRectangular>
+    <Button {...args}>Button</Button>
   </ThemeProvider>
 );
 
